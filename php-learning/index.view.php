@@ -4,32 +4,30 @@
 <head>
 	
 	<meta charset="utf-8">
-	<title>Document2</title>
+	<title>Document_reboot</title>
 </head>
 
 <body>
 	
 	<ul>
-		
 		<?php foreach ($tasks as $task) : ?>
-			<?php $task->complete(); ?>
-			<li>
+		<li>
 
-				<?php if($task->isDone()) : ?>
+				<?php if($task->status_done): ?>
 					<strike>
-				<?php endif; ?>
+				<?php endif; ?> 
 
 				<?= $task->description; ?> 
 
-				 <?php if($task->isDone()) : ?>
+				 <?php if($task->status_done) : ?>
 					</strike>
 				<?php endif; ?>
 
-
-				<?= "  :  " . $task->status_report() ?>
 					
 			</li>
 		<?php endforeach; ?>
+		
+
 	</ul>
 
 </body>

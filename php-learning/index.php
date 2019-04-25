@@ -1,45 +1,13 @@
 <?php
 
 require 'functions.php';
+require 'Task.php';
 
-class Task {
+$pdo = connectToDb();
+ 
+ $tasks = fetchAllTasks($pdo);
 
-	public $description;
-	protected $status_done = false;
-
-	public function __construct($description)
-	{
-		$this->description = $description;
-	}
-
-	public function isDone() 
-	{
-		return $this->status_done;
-	}
-
-	public function complete() 
-	{
-		$this->status_done = true;
-	}
-
-	public function status_report() 
-	{
-		if($this->isDone()) {
-			return 'Task Finished';
-		} else {return 'Task Incomplete';}
-	}
-
-}
-
-$tasks = [
-	new Task('Go to Trader Joes'),
-	new Task('Clean Up Room'),
-	new Task('Vacuum')
-];
-//dd($tasks);
-
-//$task->complete();
-//var_dump($task->isDone());
+var_dump($tasks[0]->description);
 
 
 
