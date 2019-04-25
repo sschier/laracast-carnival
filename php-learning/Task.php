@@ -1,11 +1,9 @@
 <?php
 
-require 'functions.php';
-
 class Task {
 
 	public $description;
-	protected $status_done = false;
+	protected $status_done;
 
 	public function __construct($description)
 	{
@@ -30,17 +28,3 @@ class Task {
 	}
 
 }
-
-$tasks = [
-	new Task('Go to Trader Joes'),
-	new Task('Clean Up Room'),
-	new Task('Vacuum')
-];
-//dd($tasks);
-
-//$task->complete();
-//var_dump($task->isDone());
-
-
-
-require 'index.view.php';
