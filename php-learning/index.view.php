@@ -4,7 +4,7 @@
 <head>
 	
 	<meta charset="utf-8">
-	<title>Document_reboot</title>
+	<title>Document3</title>
 </head>
 
 <body>
@@ -26,7 +26,6 @@
 					
 			</li>
 		<?php endforeach; ?>
-		
 
 	</ul>
 
