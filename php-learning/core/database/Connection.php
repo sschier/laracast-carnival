@@ -1,6 +1,8 @@
 <?php
 
-require 'Task.php';
+require 'User.php';
+require 'Task.php'; 
+
 //All this class does is return a database connection as a PDO
 class Connection
 

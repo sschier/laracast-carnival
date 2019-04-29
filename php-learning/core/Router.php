@@ -4,7 +4,12 @@ class Router
 
 {
 
-	protected $routes = [];
+	//protected $routes = [
+	public $routes = [
+
+		'GET' => [],
+		'POST' => []
+	];
 
 	public static function load($file)
 
@@ -16,19 +21,29 @@ class Router
 		return $router;
 	}
 
-	public function define($routes)
 
-	{
-		$this->routes = $routes;
+	//Pass this function the uri and the controller end point
+	//Should only be called for GET requests
+	public function get($uri, $controller) {
+
+		$this->routes['GET'][$uri] = $controller;
+
 	}
 
-	public function direct($uri)
+	//Should only be called for POST requests
+	public function post($uri, $controller) {
+
+		$this->routes['POST'][$uri] = $controller;
+
+	}
+
+
+	public function direct($uri, $requestType)
 	{
 
-		// about/culture
-		if (array_key_exists($uri, $this->routes)) {
+		if (array_key_exists($uri, $this->routes[$requestType])) { 
 
-			return $this->routes[$uri];
+			return $this->routes[$requestType][$uri];
 		}
 
 		throw new Exception('No routed defined for this URI');

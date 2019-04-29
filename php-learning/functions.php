@@ -17,6 +17,26 @@ function fetchAllTasks($pdo)
  	return $statement->fetchAll(PDO::FETCH_CLASS, 'Task');
 }
 
+function highPriority($data) 
+{
+	$filtered_data = array_filter($data, function ($entry) {
+		return $entry->priority > 3;
+
+	});
+
+	return $filtered_data;
+}
+
+function lowPriority($data) 
+{
+	$filtered_data = array_filter($data, function ($entry) {
+		return $entry->priority < 4;
+
+	});
+
+	return $filtered_data;
+}
+
 
 function dd($data) {
 
