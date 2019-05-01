@@ -1,23 +1,21 @@
 <?php
 
-function connectToDb()
-{
-	try {
-	 	return new PDO('mysql:host=127.0.0.1;dbname=mytodo', 'root', '');
-	} catch (PDOException $e) {
- 		die($e->getMessage());
- 	}
+function redirect($path) {
+
+	header("Location: /{$path}");
 }
 
-function fetchAllTasks($pdo)
-{
-	$statement = $pdo->prepare('select * from todos');
- 	$statement->execute();
+function view($name, $data = []) {
 
- 	return $statement->fetchAll(PDO::FETCH_CLASS, 'Task');
+	extract($data);
+
+	return require "views/{$name}.view.php";
 }
+
+
 
 function highPriority($data) 
+
 {
 	$filtered_data = array_filter($data, function ($entry) {
 		return $entry->priority > 3;
@@ -27,7 +25,10 @@ function highPriority($data)
 	return $filtered_data;
 }
 
+
+
 function lowPriority($data) 
+
 {
 	$filtered_data = array_filter($data, function ($entry) {
 		return $entry->priority < 4;
@@ -38,6 +39,8 @@ function lowPriority($data)
 }
 
 
+
+
 function dd($data) {
 
 	echo '<pre>';
@@ -45,9 +48,3 @@ function dd($data) {
 	echo '<pre>';
 }
 
-function over_21($age) {
-
-	if($age<21) {
-		return false;
-	} else {return true;}
-}
