@@ -1,10 +1,16 @@
 <?php
+
+namespace App\Core\Database;
+
+
+use App\Models\{Task, User};
+
 class QueryBuilder 
 
 {
 	protected $pdo;
 
-	public function __construct(PDO $pdo)
+	public function __construct(\PDO $pdo)
 
 	{
 		$this->pdo = $pdo;
@@ -18,7 +24,7 @@ class QueryBuilder
 		
 		$statement->execute();
 
-		return $statement->fetchAll(PDO::FETCH_CLASS, $class);
+		return $statement->fetchAll(\PDO::FETCH_CLASS, $class);
 	}
 
 	public function insert($table, $parameters)
@@ -40,7 +46,7 @@ class QueryBuilder
 		
 		$statement->execute($parameters);
 
-		} catch(Exception $e) {
+		} catch(\Exception $e) {
 			die('Whoops, something is wrong');
 		}
 

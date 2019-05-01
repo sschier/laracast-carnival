@@ -1,5 +1,11 @@
 <?php
 
+
+namespace App\Core;
+
+use PDO;
+
+
 class Router
 
 {
@@ -50,13 +56,15 @@ class Router
 			);
 		}
 
-		throw new Exception('No router defined for this URI');
+		throw new \Exception('No router defined for this URI');
 
 	}
 
 
 	protected function callAction($controller, $action)
 	{
+		$controller = "App\\Controllers\\{$controller}";
+		
 		$controller = new $controller;
 
 		if (! method_exists($controller, $action)) {

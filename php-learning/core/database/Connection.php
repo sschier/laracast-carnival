@@ -1,7 +1,14 @@
 <?php
 
-require 'User.php';
-require 'Task.php'; 
+namespace App\Core\Database;
+
+use PDO;
+use App\Models\{Task, User};
+
+
+//require 'User.php';
+//require 'Task.php'; 
+
 
 //All this class does is return a database connection as a PDO
 class Connection
